@@ -3,7 +3,7 @@ import 'package:graphql_demo_app/star_wars_characters.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 void main() async {
-  await initHiveForFlutter();  // Needed for caching data.
+  await initHiveForFlutter(); // Needed for caching data.
   runApp(const MyApp());
 }
 
@@ -14,7 +14,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final client = ValueNotifier(
       GraphQLClient(
-        link: HttpLink('https://swapi-graphql.netlify.app/.netlify/functions/index'),  // API URL
+        link: HttpLink(
+            'https://swapi-graphql.netlify.app/.netlify/functions/index'),
+        // API URL
         cache: GraphQLCache(store: HiveStore()),
       ),
     );
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Star Wars GraphQL Demo',
         theme: ThemeData(primarySwatch: Colors.blue),
-        home: const StarWarsCharacters(),  // Our app screen.
+        home: const StarWarsCharacters(), // Our app screen.
       ),
     );
   }
